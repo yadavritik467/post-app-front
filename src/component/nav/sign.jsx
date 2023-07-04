@@ -6,11 +6,7 @@ const Sign = ({  setLogin,sign,setSign}) => {
   const[email,setEmail] = useState("")
   const[password,setPassword] = useState("")
   const[cpassword,setCpassword] = useState("")
-  // const[passwordMatch,setPasswordMatch] = useState(false)
-
-  // if(password !== cpassword ){
-  //   setPasswordMatch(true)
-  // }
+  
 
   const register = async(e) =>{
     e.preventDefault()
@@ -23,22 +19,20 @@ const Sign = ({  setLogin,sign,setSign}) => {
         const {data} =await axios.post("https://full-stack-post-app.vercel.app/auth/register",{
           name,email,password,cpassword
         })
-        if(data.existingUser){
-          alert(data.message)
-        }
-        else{
+        if(data.user){
+          
           alert("user created successfully, Now login!!")
-
         }
+        
       } catch (error) {
         console.error(error)
+        alert("this user already exists")
       }
     }
     
   }
 
 
- 
     
   return (
     <div>
